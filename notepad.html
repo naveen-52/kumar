@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share Your Thoughts</title>
+    <link rel="stylesheet" href="notepad.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="navbar">
+        <h1>Write Your Happiest Moment</h1>
+        <h1><span class="small">(It's like a notepad)</span></h1>
+    </div>
+    <div class="container">
+      <!--  <div class="book-container">
+            <h2>Life of Pie</h2>
+            <h4>pie</h4>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere odit, molestias cum alias fuga quo esse cumque maiores facilis, totam quisquam qui nulla voluptate deserunt sapiente possimus nemo eaque. Voluptas?</p>
+            <button onclick="deletebook(event)">delete</button>-->
+        </div>
+    </div>
+
+
+    <div class="overlay"></div>
+    <div class="popupbox">
+        <h2>ADD MEMORIES...</h2>
+        <form>
+            <input type="text" placeholder="your name... " id="name">
+            
+            <input type="text" placeholder="memories name... " id="memorious">
+            
+            <textarea placeholder="write your memories..." id="text"></textarea>
+            <br>
+            <button class="add1" id="adddetails">ADD</button>
+            <button class="cancel1" id="clearpopup">CANCEL</button>
+        </form>
+    </div>
+          <button class="add-button" id="add-popup-button" onclick="add()">+</button>
+          <script src="notepad.js"></script>
+    <script>
+        var overlayed=document.querySelector(".overlay")
+var overlay=document.querySelector(".overlay")
+var popup=document.querySelector(".popupbox")
+var buttonopen=document.getElementById("add-popup-button")
+var buttondelete=document.getElementById("clearpopup")
+buttonopen.addEventListener("click",function(){
+    alert("Take screen shot in your Mobile or Pc, In this content store temporary.")
+    overlay.style.display="block"
+    popup.style.display="block"
+})
+buttondelete.addEventListener("click",function(event){
+     event.preventDefault()
+    overlay.style.display="none"
+    popup.style.display="none"
+})
+//selectinput
+var container=document.querySelector(".container")
+var Yourname=document.getElementById("name")
+var Memoriesname=document.getElementById("memorious")
+var Description=document.getElementById("text")
+var buttonadd=document.getElementById("adddetails")
+
+//
+buttonadd.addEventListener("click",function(event){
+//append process...
+event.preventDefault()
+var div=document.createElement("div")
+div.setAttribute("class","book-container")
+div.innerHTML=`<h2>${Yourname.value}</h2> <h4>${Memoriesname.value}</h4><br><p>${Description.value}</p> <button onclick="deletebook(event)">delete</button>
+`
+container.append(div)
+ overlay.style.display="none"
+    popup.style.display="none"
+    resetinput();
+
+})
+ function resetinput() {
+    document.getElementById("name").value = "";
+    document.getElementById("memorious").value = ""
+    document.getElementById("text").value = "";
+  }
+function deletebook(event)
+{
+     event.target.parentElement.remove()
+}
+    </script>
+</body>
+</html>
